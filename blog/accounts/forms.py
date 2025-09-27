@@ -1,0 +1,12 @@
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from .models import CostumUser
+
+class CostumUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm):
+        model = CostumUser
+        fields = UserCreationForm.Meta.fields + ('age', )
+
+class CostumUserChangeForm(UserChangeForm):
+    class Meta(UserChangeForm):
+        model = CostumUser
+        fields = UserChangeForm.Meta.fields
