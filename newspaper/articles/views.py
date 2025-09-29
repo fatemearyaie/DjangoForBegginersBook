@@ -9,3 +9,21 @@ class CreateArticle(CreateView):
     model = Article
     template_name = 'articles/create_article.html'
     fields = ['title', 'body', 'author']
+
+class ListArticle(ListView):
+    model = Article
+    template_name = 'articles/articles_list.html'
+
+class UpdateArticle(UpdateView):
+    model = Article
+    template_name = 'articles/edit_article.html'
+    fields = ['title', 'body']
+
+class DeleteArticle(DeleteView):
+    model = Article
+    template_name = 'articles/delete_article.html'
+    success_url = reverse_lazy('list')
+
+class DetailArticle(DetailView):
+    model = Article
+    template_name = 'articles/detail_article.html'
