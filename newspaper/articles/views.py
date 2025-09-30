@@ -8,7 +8,12 @@ from django.urls import reverse_lazy
 class CreateArticle(CreateView):
     model = Article
     template_name = 'articles/create_article.html'
-    fields = ['title', 'body', 'author']
+    fields = ['title', 'body']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
 
 class ListArticle(ListView):
     model = Article
