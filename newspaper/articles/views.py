@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView , DetailView
 from .models import Article
 from django.urls import reverse_lazy
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
-class CreateArticle(CreateView):
+class CreateArticle(LoginRequiredMixin, CreateView):
     model = Article
     template_name = 'articles/create_article.html'
     fields = ['title', 'body']
