@@ -15,20 +15,20 @@ class CreateArticle(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
     
 
-class ListArticle(ListView):
+class ListArticle(LoginRequiredMixin, ListView):
     model = Article
     template_name = 'articles/articles_list.html'
 
-class UpdateArticle(UpdateView):
+class UpdateArticle(LoginRequiredMixin, UpdateView):
     model = Article
     template_name = 'articles/edit_article.html'
     fields = ['title', 'body']
 
-class DeleteArticle(DeleteView):
+class DeleteArticle(LoginRequiredMixin, DeleteView):
     model = Article
     template_name = 'articles/delete_article.html'
     success_url = reverse_lazy('list')
 
-class DetailArticle(DetailView):
+class DetailArticle(LoginRequiredMixin, DetailView):
     model = Article
     template_name = 'articles/detail_article.html'
